@@ -6,6 +6,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Testing File and Folder
 log.txt
 log/
 test.txt

